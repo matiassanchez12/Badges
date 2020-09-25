@@ -85,7 +85,7 @@ function BadgeForm (props) {
 
           {loading
             ? <MiniLoader />
-            : <img src={image} style={{width: '300px'}} />}
+            : <img alt="algo" src={image} style={{width: '300px'}} />}
 
           <p className="p-accept">
             <input type="checkbox" className="button-check" value="accept" />
