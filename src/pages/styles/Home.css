@@ -1,0 +1,55 @@
+.Home__hero {
+    width: 100%;
+    height: 90.4vh;
+    padding: 2rem 0;
+    background: url('../../images/stars.svg'), #1B1B25;
+    background-repeat: repeat;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+  }
+
+ .Home__data-div{
+    display: grid;
+    width: 50%;
+    position: relative;
+    top: 25px;
+    align-items: center;
+ } 
+.Home__data-img{
+    display:block;
+    margin:auto;
+}
+.Home__data-title{
+    font-weight: bold;
+    text-align: start;
+    justify-self: center;
+    align-self: center;
+    position: relative;
+    bottom: 40px;
+    left: 45px;
+}
+.Home__data-button{
+    align-self: center;
+    justify-self: center;
+    position: relative;
+    bottom: 80px;
+}
+.Home__data-button button{
+    color: #fff;
+    width: 150%;
+    height: 50%;
+    background-color: #7DCD40;
+    border-color: #7DCD40;
+}
+
+.Home__img{
+    display: flex;
+    justify-content: center;
+}
+.Home__img img{ 
+    width: 85%;
+    position: relative;
+    bottom: 20px;
+    right: 20px;
+}

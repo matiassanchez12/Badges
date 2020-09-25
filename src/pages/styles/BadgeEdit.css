@@ -1,0 +1,33 @@
+.BadgeNew__hero {
+  width: 100%;
+  padding: 2rem 0;
+  background: url('../../images/stars.svg'), #1b1b25;
+  background-repeat: repeat;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.BadgeNew__hero img {
+  display: grid;
+  align-content: center;
+  position: relative;
+  left: 20%;
+}
+
+.myDiv {
+  position: relative;
+  left: 7%;
+  bottom: 70px;
+  max-width: 470px;
+  background: white;
+  border-radius: 10px;
+}
+
+.title {
+  text-align: center;
+  padding: 0;
+  position: relative;
+  color: white;
+  bottom: 100px;
+  font-size: 50px;
+}

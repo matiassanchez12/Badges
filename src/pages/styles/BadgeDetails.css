@@ -1,0 +1,41 @@
+.Main_div{
+    display: grid;
+}
+
+.BadgeNew__hero {
+    width: 100%;
+    padding: 2rem 0;
+    background: url('../../images/stars.svg'), #1b1b25;
+    background-repeat: repeat;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+.badge_container{
+    position: relative;
+    display: grid;
+    justify-content: center;
+}
+.prueba{
+    width: 250%;
+}
+.my_badge_container{
+    display:flex;
+    padding-bottom: 20px;
+}
+
+.badge_opt{
+    display: flex;
+    flex-direction: column;
+}
+
+.one_button{
+    width: 40%;
+    height: 15%;
+    margin-bottom: 30px;
+    border-bottom: groove;
+}
+
+.twitter-color{
+    color: rgb(0, 110, 255);
+}

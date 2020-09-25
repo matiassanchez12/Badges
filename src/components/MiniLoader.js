@@ -1,0 +1,15 @@
+import React, {Component} from 'react';
+
+import './Styles/Loader.css';
+
+export default class Loader extends Component {
+  render () {
+    return (
+      <div className="lds-grid algo">
+        <div />
+        <div />
+        <div />
+      </div>
+    );
+  }
+}
