@@ -1,31 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Styles/BadgeForm.css';
 import imageImg from '../images/icon-gallery-free-22.jpg';
-import MiniLoader from '../components/MiniLoader';
 
 function BadgeForm (props) {
-  const [image, setImage] = useState ('');
-  const [loading, setLoading] = useState (false);
-
-  const uploadImage = async e => {
-    const files = e.target.files;
-    const data = new FormData ();
-    data.append ('file', files[0]);
-    data.append ('upload_preset', 'matias');
-    setLoading (true);
-    const res = await fetch (
-      '	https://api.cloudinary.com/v1_1/matiaskaufman/image/upload',
-      {
-        method: 'POST',
-        body: data,
-      }
-    );
-    const file = await res.json ();
-
-    setImage (file.secure_url);
-    setLoading (false);
-  };
-
   return (
     <div className="myDivHero">
 
@@ -76,16 +53,13 @@ function BadgeForm (props) {
             <img className="button-upload_img" src={imageImg} alt="imgIcon" />
             <p>Uppload profile picture</p>
             <input
+              name="avatarLocal"
               className="input"
               type="file"
-              onChange={uploadImage}
+              onChange={props.onChangeImg}
               accept="image/*"
             />
           </label>
-
-          {loading
-            ? <MiniLoader />
-            : <img alt="algo" src={image} style={{width: '300px'}} />}
 
           <p className="p-accept">
             <input type="checkbox" className="button-check" value="accept" />

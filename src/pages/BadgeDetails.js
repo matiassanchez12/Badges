@@ -2,6 +2,7 @@ import React from 'react';
 import Badge from '../components/Badge';
 import {Link} from 'react-router-dom';
 import DeleteBadgeModal from '../components/DeleteBadgeModal';
+import FeaturesBadgeModal from '../components/FeaturesBadgeModal';
 
 import './styles/BadgeDetails.css';
 import Header from '../images/platziconf-logo.svg';
@@ -21,7 +22,7 @@ function BadgeDetails (props) {
             email={badge.email}
             twitter={badge.twitter}
             jobTitle={badge.jobTitle}
-            avatarUrl="https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon"
+            avatarUrl={badge.avatarLocal}
           />
 
         </div>
@@ -33,7 +34,17 @@ function BadgeDetails (props) {
           >
             Edit
           </Link>
-          <button className="btn btn-primary one_button">Print</button>
+          <button
+            onClick={props.onOpenModalFeautures}
+            className="btn btn-primary one_button"
+          >
+            Print Features
+          </button>
+          <FeaturesBadgeModal
+            isOpen={props.modalFeauturesIsOpen}
+            onClose={props.onCloseModalFeautures}
+            badgeData={badge}
+          />
 
           <button
             onClick={props.onOpenModal}

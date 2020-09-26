@@ -10,7 +10,8 @@ class BadgeDetailsContainer extends React.Component {
     loading: true,
     error: null,
     data: undefined,
-    modalIsOpen: false,
+    modalDeleteIsOpen: false,
+    modalFeaturesIsOpen: false,
   };
 
   componentDidMount () {
@@ -34,6 +35,14 @@ class BadgeDetailsContainer extends React.Component {
   handleCloseModal = e => {
     this.setState ({modalIsOpen: false});
   };
+
+  handleOpenModalFeautures = e => {
+    this.setState ({modalFeauturesIsOpen: true});
+  };
+  handleCloseModalFeautures = e => {
+    this.setState ({modalFeauturesIsOpen: false});
+  };
+
   handleDeleteBadge = async e => {
     this.setState ({loading: true, error: null});
     try {
@@ -61,6 +70,9 @@ class BadgeDetailsContainer extends React.Component {
         onCloseModal={this.handleCloseModal}
         onOpenModal={this.handleOpenModal}
         onDeleteBadge={this.handleDeleteBadge}
+        modalFeauturesIsOpen={this.state.modalFeauturesIsOpen}
+        onCloseModalFeautures={this.handleCloseModalFeautures}
+        onOpenModalFeautures={this.handleOpenModalFeautures}
       />
     );
   }

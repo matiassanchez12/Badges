@@ -12,7 +12,9 @@ class BadgesListItem extends React.Component {
         <Gravatar
           className="BadgesListItem__avatar"
           email={this.props.badge.email}
+          avatarLocal={this.props.badge.avatarLocal}
           alt="Avatar"
+          avatarLoading={false}
         />
 
         <div className="BadgesListItem__fonts">

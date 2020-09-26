@@ -5,19 +5,56 @@ import Header from '../images/platziconf-logo.svg';
 import Badge from '../components/Badge';
 import api from '../api';
 import PageLoading from '../components/PageLoading';
+import AlertBadgeModal from '../components/AlertBadgeModal';
+import PageLoadingFixed from '../components/PageLoadingFixed';
 
 class BadgesNew extends React.Component {
   state = {
+    loadingFixed: false,
+    loadingMini: false,
     loading: false,
     error: null,
+    modalAlertIsOpen: false,
     form: {
       firstName: '',
       lastName: '',
       email: '',
       jobTitle: '',
       twitter: '',
-      avatarUrl: '',
+      avatarLocal: '',
     },
+  };
+
+  uploadImage = async e => {
+    const files = e.target.files;
+    const data = new FormData ();
+    data.append ('file', files[0]);
+    data.append ('upload_preset', 'matias');
+    this.setState ({loadingMini: true});
+    try {
+      const res = await fetch (
+        '	https://api.cloudinary.com/v1_1/matiaskaufman/image/upload',
+        {
+          method: 'POST',
+          body: data,
+        }
+      );
+      const file = await res.json ();
+
+      this.setState ({
+        form: {
+          ...this.state.form,
+          avatarLocal: file.secure_url,
+        },
+      });
+      this.setState ({loadingMini: false});
+    } catch (error) {
+      this.setState ({loadingMini: false});
+    }
+  };
+
+  handleCloseModal = e => {
+    this.setState ({modalAlertIsOpen: false});
   };
 
   handleChange = e => {
@@ -31,14 +68,17 @@ class BadgesNew extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault ();
-    this.setState ({loading: true, error: null});
+    this.setState ({loadingFixed: true, error: null});
     try {
       await api.badges.create (this.state.form);
-      this.setState ({loading: false});
-
-      this.props.history.push ('/badges');
+      this.setState ({
+        loading: false,
+        loadingFixed: false,
+        modalAlertIsOpen: true,
+      });
+      // this.props.history.push ('/badges');
     } catch (error) {
-      this.setState ({loading: false, error: error});
+      this.setState ({loading: false, error: error, loadingFixed: false});
     }
   };
 
@@ -48,6 +88,10 @@ class BadgesNew extends React.Component {
     }
     return (
       <div>
+        <AlertBadgeModal
+          isOpen={this.state.modalAlertIsOpen}
+          onClose={this.handleCloseModal}
+        />
         <div className="BadgeNew__hero">
           <img className="img-fluid" src={Header} alt="Estrellas" />
         </div>
@@ -60,10 +104,12 @@ class BadgesNew extends React.Component {
                 lastName={this.state.form.lastName || 'LAST_NAME'}
                 twitter={this.state.form.twitter || 'twitter'}
                 jobTitle={this.state.form.jobTitle || 'JOB_TITLE'}
-                email={this.state.form.email || 'EMAIL'}
-                avatarUrl="https://www.gravatar.com/avatar/21594ed15d68ace3965642162f8d2e84?d=identicon"
+                email={this.state.form.email || ''}
+                avatarUrl={this.state.form.avatarLocal}
+                avatarLoading={this.state.loadingMini}
               />
             </div>
+            {this.state.loadingFixed ? <PageLoadingFixed /> : ''};
             <div className="col-6 myDiv">
               <h1 className="title">NEW ATTENDANT</h1>
               <BadgeForm
@@ -71,6 +117,7 @@ class BadgesNew extends React.Component {
                 onSubmit={this.handleSubmit}
                 formValues={this.state.form}
                 error={this.state.error}
+                onChangeImg={this.uploadImage}
               />
             </div>
           </div>

@@ -16,8 +16,9 @@ class Badge extends React.Component {
           <Gravatar
             className="Badge__avatar"
             email={this.props.email}
-            avatar={this.props.avatarUrl}
+            avatarLocal={this.props.avatarUrl}
             alt="Avatar"
+            avatarLoading={this.props.avatarLoading}
           />
           <h1>{this.props.firstName} <br /> {this.props.lastName}</h1>
         </div>

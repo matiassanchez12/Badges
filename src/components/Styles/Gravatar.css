@@ -1,0 +1,11 @@
+.divContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.divNormal{
+    position: absolute;
+    z-index: 10;
+    /* backgroundImage: 'url(' + imgUrl + ')'; */
+}

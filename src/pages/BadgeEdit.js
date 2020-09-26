@@ -8,6 +8,7 @@ import PageLoading from '../components/PageLoading';
 
 class BadgesNew extends React.Component {
   state = {
+    loadingMini: false,
     loading: true,
     error: null,
     form: {
@@ -16,7 +17,7 @@ class BadgesNew extends React.Component {
       email: '',
       jobTitle: '',
       twitter: '',
-      avatarLocal: 'https://pbs.twimg.com/profile_images/958172060206841856/xNhKM5Sn.png',
+      avatarLocal: '',
     },
   };
 
@@ -35,6 +36,35 @@ class BadgesNew extends React.Component {
       this.setState ({loading: false, error: error});
     }
   };
+
+  uploadImage = async e => {
+    const files = e.target.files;
+    const data = new FormData ();
+    data.append ('file', files[0]);
+    data.append ('upload_preset', 'matias');
+    this.setState ({loadingMini: true});
+    try {
+      const res = await fetch (
+        '	https://api.cloudinary.com/v1_1/matiaskaufman/image/upload',
+        {
+          method: 'POST',
+          body: data,
+        }
+      );
+      const file = await res.json ();
+
+      this.setState ({
+        form: {
+          ...this.state.form,
+          avatarLocal: file.secure_url,
+        },
+      });
+      this.setState ({loadingMini: false});
+    } catch (error) {
+      this.setState ({loadingMini: false});
+    }
+  };
+
   handleChange = e => {
     this.setState ({
       form: {
@@ -81,7 +111,8 @@ class BadgesNew extends React.Component {
                   twitter={this.state.form.twitter || 'twitter'}
                   jobTitle={this.state.form.jobTitle || 'JOB_TITLE'}
                   email={this.state.form.email || 'EMAIL'}
-                  avatarUrl={this.state.form.avatarUrl}
+                  avatarUrl={this.state.form.avatarLocal}
+                  avatarLoading={this.state.loadingMini}
                 />
               </div>
               <div className="col-6 myDiv">
@@ -91,6 +122,7 @@ class BadgesNew extends React.Component {
                   onSubmit={this.handleSubmit}
                   formValues={this.state.form}
                   error={this.state.error}
+                  onChangeImg={this.uploadImage}
                 />
               </div>
             </div>

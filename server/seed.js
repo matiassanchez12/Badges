@@ -18,8 +18,7 @@ function createBadges (limit = 5) {
       email,
       jobTitle: faker.name.jobTitle (),
       twitter: `${firstName}${lastName}${faker.address.zipCode ()}`,
-      avatarUrl: avatar,
-      avatarLocal: faker.name.avatarLocal (),
+      avatarUrl: faker.name.avatarLocal () || avatar,
     });
   }
 

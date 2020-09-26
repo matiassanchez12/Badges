@@ -10,3 +10,13 @@
   .DeleteBadgeModal button+button {
     margin-left: 1rem;
   }
+
+  .Alert-font{
+    font-size: 22px;
+    margin: 20px;
+  }
+
+  .buton-modif{
+    padding:5px;
+    font-size: 18px;
+  }

@@ -23,10 +23,6 @@ class Badges extends React.Component {
     this.intervalId = setInterval (this.fetchData, 5000);
   }
 
-  componentWillUnmount () {
-    clearInterval (this.intervalId);
-  }
-
   handleClick = e => {
     if (!this.state.openForm) {
       this.setState ({openForm: 'formIsOpen'});
@@ -53,7 +49,6 @@ class Badges extends React.Component {
     if (this.state.error) {
       return <PageError error={this.state.error} />;
     }
-
     return (
       <React.Fragment>
         <div className="Badges">
@@ -70,7 +65,9 @@ class Badges extends React.Component {
 
         <div className="Badge__container">
           <div className="Badges__buttons">
-            <Link to="/badges/new" className="btn btn-primary">New Badge</Link>
+            <Link to="/badges/new" className="btn btn-primary">
+              New Badge
+            </Link>
 
             <button
               onClick={this.handleClick}
