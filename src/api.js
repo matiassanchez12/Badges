@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://platzi-badges.herokuapp.com';
 
 const delay = ms => new Promise (resolve => setTimeout (resolve, ms));
 
