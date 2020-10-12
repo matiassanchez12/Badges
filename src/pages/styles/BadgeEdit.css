@@ -22,7 +22,10 @@
   background: white;
   border-radius: 10px;
 }
-
+.myDivDos{
+  position: relative;
+    left: 5%;
+}
 .title {
   text-align: center;
   padding: 0;

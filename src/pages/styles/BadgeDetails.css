@@ -14,7 +14,7 @@
 .badge_container{
     position: relative;
     display: grid;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .prueba{
     width: 250%;
@@ -22,11 +22,13 @@
 .my_badge_container{
     display:flex;
     padding-bottom: 20px;
+    margin: 0 10em;
 }
 
 .badge_opt{
     display: flex;
     flex-direction: column;
+    margin-left: 50px;
 }
 
 .one_button{

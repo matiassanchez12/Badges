@@ -7,6 +7,7 @@
     "client": "react-scripts start",
     "server": "json-server --port 3001 --watch server/db.json",
     "seed": "node server/seed.js",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -14,6 +15,7 @@
   "dependencies": {
     "bootstrap": "^4.5.2",
     "date-fns": "^2.16.1",
+    "firebase": "^7.23.0",
     "md5": "^2.3.0",
     "mini-create-react-context": "^0.4.0",
     "react": "16.8.3",

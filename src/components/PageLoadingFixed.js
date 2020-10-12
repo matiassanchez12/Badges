@@ -5,7 +5,7 @@ import './Styles/PageLoadingFixed.css';
 function PageLoadingFixed () {
   return (
     <div className="PageLoading">
-      <div class="lds-roller"><div /><div /><div /></div>
+      <div className="lds-roller"><div /><div /><div /></div>
     </div>
   );
 }

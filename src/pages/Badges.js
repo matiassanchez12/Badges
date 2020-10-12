@@ -2,10 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import BadgesList from '../components/BadgesList';
-import api from '../api';
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
 import MiniLoader from '../components/MiniLoader';
+import {db} from './firebase';
 
 import confLogo from '../images/badge-header.svg';
 import '../pages/styles/Badges.css';
@@ -35,8 +35,15 @@ class Badges extends React.Component {
     this.setState ({loading: true, error: null});
 
     try {
-      const data = await api.badges.list ();
-      this.setState ({loading: false, data: data});
+      db.collection ('badges').onSnapshot (badge => {
+        const datas = [];
+        badge.forEach (doc => {
+          datas.push ({...doc.data (), id: doc.id});
+        });
+        this.setState ({loading: false, data: datas});
+      });
+      // const data = await api.badges.list ();
+      // this.setState ({loading: false, data: data});
     } catch (error) {
       this.setState ({loading: false, error: error});
     }

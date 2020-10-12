@@ -3,7 +3,7 @@ import BadgeForm from '../components/BadgeForm';
 import '../pages/styles/BadgeNew.css';
 import Header from '../images/platziconf-logo.svg';
 import Badge from '../components/Badge';
-import api from '../api';
+import {db} from './firebase';
 import PageLoading from '../components/PageLoading';
 import AlertBadgeModal from '../components/AlertBadgeModal';
 import PageLoadingFixed from '../components/PageLoadingFixed';
@@ -70,7 +70,8 @@ class BadgesNew extends React.Component {
     e.preventDefault ();
     this.setState ({loadingFixed: true, error: null});
     try {
-      await api.badges.create (this.state.form);
+      await db.collection ('badges').doc ().set (this.state.form);
+      // await api.badges.create (this.state.form);
       this.setState ({
         loading: false,
         loadingFixed: false,
@@ -104,7 +105,7 @@ class BadgesNew extends React.Component {
                 lastName={this.state.form.lastName || 'LAST_NAME'}
                 twitter={this.state.form.twitter || 'twitter'}
                 jobTitle={this.state.form.jobTitle || 'JOB_TITLE'}
-                email={this.state.form.email || ''}
+                email={this.state.form.email || 'non-email'}
                 avatarUrl={this.state.form.avatarLocal}
                 avatarLoading={this.state.loadingMini}
               />

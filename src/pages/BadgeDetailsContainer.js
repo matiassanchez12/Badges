@@ -1,8 +1,8 @@
 import React from 'react';
 import BadgeDetails from './BadgeDetails';
-import api from '../api';
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
+import {db} from './firebase';
 
 class BadgeDetailsContainer extends React.Component {
   ///SE PODRA HACER UN NUEVO ARCHIVO CON ESTAS FUNCIONES Y LLAMADAS A API?
@@ -22,8 +22,16 @@ class BadgeDetailsContainer extends React.Component {
     this.setState ({loading: true, error: null});
 
     try {
-      const data = await api.badges.read (this.props.match.params.badgeId);
-      this.setState ({loading: false, data: data});
+      // const data = await api.badges.read (this.props.match.params.badgeId);
+      const badge = [];
+      const oneDoc = await db
+        .collection ('badges')
+        .doc (this.props.match.params.badgeId);
+
+      const data = await oneDoc.get ();
+      badge.push ({...data.data (), id: data.id});
+
+      this.setState ({loading: false, data: badge[0]});
     } catch (error) {
       this.setState ({loading: false, error: error});
     }
@@ -46,7 +54,11 @@ class BadgeDetailsContainer extends React.Component {
   handleDeleteBadge = async e => {
     this.setState ({loading: true, error: null});
     try {
-      await api.badges.remove (this.props.match.params.badgeId);
+      await db
+        .collection ('badges')
+        .doc (this.props.match.params.badgeId)
+        .delete ();
+      // await api.badges.remove (this.props.match.params.badgeId);
       this.setState ({loading: false});
 
       this.props.history.push ('/badges');

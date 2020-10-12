@@ -5,7 +5,7 @@
   overflow: hidden;
   height: 380px;
   position: relative;
-  left: 50px;
+  /* left: 50px; */
 }
 
 .Badge__header {

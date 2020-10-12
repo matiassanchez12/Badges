@@ -1,0 +1,31 @@
+{
+  "badges": [
+    {
+      "firstName": "Ramuel",
+      "lastName": "Hernesto",
+      "email": "asdasdads@gmail.com",
+      "jobTitle": "Sepulturero",
+      "twitter": "asdasd",
+      "id": "-nYlk26",
+      "avatarLocal": "https://res.cloudinary.com/matiaskaufman/image/upload/v1601151775/matias/gntdzc1zw3v3fddhavgx.png"
+    },
+    {
+      "firstName": "Selena",
+      "lastName": "Jimenez",
+      "email": "SelenaJmenz@gmail.com",
+      "jobTitle": "Developer",
+      "twitter": "SelenaJimenez",
+      "avatarLocal": "https://pbs.twimg.com/profile_images/958172060206841856/xNhKM5Sn.png",
+      "id": "KGTO-y6"
+    },
+    {
+      "firstName": "David",
+      "lastName": "Ketsal",
+      "email": "",
+      "jobTitle": "Frontend Developer",
+      "twitter": "Daviketsal",
+      "avatarLocal": "https://res.cloudinary.com/matiaskaufman/image/upload/v1601151814/matias/g9hxta16yd5is3n5fuyg.jpg",
+      "id": "AOpXm_n"
+    }
+  ]
+}
