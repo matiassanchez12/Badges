@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npm-run-all -p client server",
+    "start": "react-scripts start",
     "client": "react-scripts start",
-    "server": "json-server --port 3001 --watch server/db.json",
-    "seed": "node server/seed.js",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

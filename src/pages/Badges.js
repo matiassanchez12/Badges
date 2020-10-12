@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+// "server": "json-server --port 3001 --watch server/db.json",
+// "seed": "node server/seed.js",
+// npm-run-all -p client server
 import BadgesList from '../components/BadgesList';
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
